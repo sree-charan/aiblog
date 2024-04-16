@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Blog Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #000000, #171717);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+        }
+        button {
+            padding: 15px 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .content {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        p {
+            font-size: 18px;
+            margin: 0 0 15px;
+        }
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Blog Generator</h1>
+        <form method="post">
+            <input type="text" id="title" name="title" placeholder="Enter a title" required>
+            <button type="submit">Generate and Post</button>
+        </form>
+        {% if genTitle and genOutput %}
+        <div class="content">
+            <h2>Link to Post:</h2>
+            <p><a href="{{ genLink }}" target="_blank">{{ genLink }}</a></p>
+            <h2>Generated Title:</h2>
+            <p>{{ genTitle }}</p>
+            <h2>Generated Content:</h2>
+            <div>{{ genOutput|safe }}</div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
